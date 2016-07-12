@@ -1,12 +1,10 @@
 package com.lightcone.playingvideo;
 
-import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
 import java.io.File;
 
 import android.media.MediaPlayer;
