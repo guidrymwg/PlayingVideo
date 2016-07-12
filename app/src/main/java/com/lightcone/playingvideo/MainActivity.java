@@ -1,5 +1,8 @@
 package com.lightcone.playingvideo;
 
+import android.graphics.Bitmap;
+import android.media.MediaMetadataRetriever;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -17,7 +20,7 @@ public class MainActivity extends AppCompatActivity
         implements OnCompletionListener, OnPreparedListener {
 
     // Video source file
-    private static final String fileName = "Bawwlllll.mp4";
+    private static final String fileName = "LIGOchirp.mp4";
 
     private VideoView videoPlayer;
     private static final String TAG="VIDEO";
@@ -64,6 +67,15 @@ public class MainActivity extends AppCompatActivity
         String videoResource = externalFilesDir +"/" + fileName;
         Log.i(TAG,"videoPath="+videoResource);
         videoPlayer.setVideoPath(videoResource);
+
+        MediaMetadataRetriever mdr = new MediaMetadataRetriever();
+
+        // For reference, find the orientation of the video (if API 17 or later)
+        mdr.setDataSource(videoResource);
+        if (Build.VERSION.SDK_INT >= 17) {
+            String orient = mdr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION);
+            Log.i(TAG, "Orientation="+orient+" degrees");
+        }
     }
 
     /** This callback will be invoked when the file is ready to play */
