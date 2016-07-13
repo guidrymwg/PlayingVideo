@@ -68,7 +68,9 @@ public class MainActivity extends AppCompatActivity
 
         MediaMetadataRetriever mdr = new MediaMetadataRetriever();
 
-        // For reference, find the orientation of the video (if API 17 or later)
+        // For reference, find the original orientation of the video (if API 17 or later).  We
+        // won't use it here, but it is potentially useful information
+
         mdr.setDataSource(videoResource);
         if (Build.VERSION.SDK_INT >= 17) {
             String orient = mdr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_VIDEO_ROTATION);
